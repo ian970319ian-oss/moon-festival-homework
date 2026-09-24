@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌕 中秋月餅 Clicker - 終極彩蛋版</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🌕 中秋月餅 Clicker</h1>
+            <p id="level-title" class="level-badge">LV 1：傳統蛋黃酥</p>
+        </header>
+
+        <div class="score-board">
+            <div class="score-item">
+                <span class="label">當前分數</span>
+                <span id="current-score" class="value">0</span>
+            </div>
+            <div class="score-item">
+                <span class="label">最高紀錄</span>
+                <span id="high-score" class="value">0</span>
+            </div>
+        </div>
+
+        <main class="game-area">
+            <!-- 月餅點擊按鈕 -->
+            <button id="mooncake-btn" class="mooncake-btn" aria-label="點擊月餅">
+                <span id="mooncake-icon">🥮</span>
+            </button>
+        </main>
+
+        <!-- 進化進度條 -->
+        <div class="progress-container">
+            <div class="progress-label">距離下次進化：<span id="next-level-req">10</span> 次</div>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🎆 全螢幕特效 Overlay -->
+    <div id="fullscreen-overlay" class="fullscreen-overlay hidden">
+        <div id="overlay-content" class="overlay-content"></div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>

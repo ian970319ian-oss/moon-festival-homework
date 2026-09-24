@@ -1,0 +1,267 @@
+:root {
+  --bg-color: #0d1b2a;
+  --card-bg: #1b263b;
+  --accent-color: #fca311;
+  --text-color: #ffffff;
+  --subtext-color: #e0e1dd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: radial-gradient(circle at center, #1b263b 0%, #0d1b2a 100%);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.level-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 16px;
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: bold;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.score-board {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score-item .label {
+  font-size: 0.8rem;
+  color: var(--subtext-color);
+}
+
+.score-item .value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* 🥮 月餅按鈕點擊與進化動畫 */
+.mooncake-btn {
+  font-size: 8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 0 20px rgba(252, 163, 17, 0.3));
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mooncake-btn:active {
+  transform: scale(0.85) rotate(-5deg);
+}
+
+.evolve-anim {
+  animation: evolvePulse 0.7s ease-out;
+}
+
+@keyframes evolvePulse {
+  0% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.6) rotate(180deg); filter: brightness(2.5) drop-shadow(0 0 50px #ffffff); }
+  100% { transform: scale(1) rotate(360deg); filter: brightness(1); }
+}
+
+/* 點擊浮動文字 (+1) */
+.float-text {
+  position: fixed;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 1000;
+  animation: floatUp 0.8s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-60px) scale(1.3); }
+}
+
+/* 進度條 */
+.progress-container {
+  width: 100%;
+  font-size: 0.85rem;
+  color: var(--subtext-color);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: var(--card-bg);
+  border-radius: 5px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fca311, #ffb703);
+  transition: width 0.3s ease;
+}
+
+/* 🌌 超震撼全螢幕 Overlay 特效容器 */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.fullscreen-overlay.active {
+  opacity: 1;
+}
+
+.hidden { display: none !important; }
+
+/* 隨機食材彩蛋卡片 */
+.egg-banner {
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid var(--accent-color);
+  padding: 30px 50px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(252, 163, 17, 0.8);
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.egg-icon { font-size: 6rem; }
+.egg-title { font-size: 1.8rem; color: #ffb703; margin-top: 10px; }
+
+/* 100 次：超級玉兔奔月 */
+.rabbit-sky-super {
+  background: radial-gradient(circle, rgba(13, 27, 42, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  animation: screenShake 0.4s ease-in-out;
+}
+
+.moon-giant-super {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 14rem;
+  filter: drop-shadow(0 0 60px #ffea00);
+}
+
+.rabbit-fly-super {
+  position: absolute;
+  font-size: 11rem;
+  left: -150px;
+  bottom: -150px;
+  animation: superFly 2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+  filter: drop-shadow(0 0 30px #ffffff);
+}
+
+.rabbit-text-super {
+  position: absolute;
+  bottom: 12%;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  color: #ffb703;
+  font-weight: 900;
+  text-shadow: 0 0 30px #ff9800, 0 0 10px #ffffff;
+}
+
+/* 300 次：神級嫦娥賜福 */
+.god-sky-super {
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(20, 0, 10, 0.95) 100%);
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.fairy-fly-super {
+  position: absolute;
+  font-size: 12rem;
+  top: 25%;
+  left: -200px;
+  animation: fairyAcrossSuper 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  filter: drop-shadow(0 0 50px #ffffff);
+}
+
+.god-text-super {
+  position: absolute;
+  top: 55%;
+  width: 100%;
+  text-align: center;
+  font-size: 3.5rem;
+  color: #ffffff;
+  font-weight: 900;
+  text-shadow: 0 0 40px #ff007f, 0 0 20px #ffea00;
+}
+
+/* Keyframes 動畫 */
+@keyframes superFly {
+  0% { left: -150px; bottom: -150px; transform: scale(0.6) rotate(0deg); }
+  100% { left: 65%; bottom: 60%; transform: scale(1.8) rotate(-25deg); }
+}
+
+@keyframes fairyAcrossSuper {
+  0% { left: -200px; transform: translateY(0) scale(0.8); }
+  50% { transform: translateY(-50px) scale(1.5); }
+  100% { left: 110vw; transform: translateY(0) scale(1); }
+}
+
+@keyframes screenShake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-10px, 10px); }
+  40% { transform: translate(10px, -10px); }
+  60% { transform: translate(-5px, 5px); }
+  80% { transform: translate(5px, -5px); }
+}
+
+.sparkle-particle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.8rem;
+  animation: explode 1s ease-out forwards;
+  z-index: 10000;
+}
+
+@keyframes explode {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.2); }
+}
