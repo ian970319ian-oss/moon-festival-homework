@@ -11,7 +11,7 @@
 
 ### 環境需求
 - 現代瀏覽器（Chrome / Edge / Firefox / Safari）
-- VSCode + Live Server 套件（推薦）
+- VSCode 
 
 ### AI Tools
 - Gemini 3.6
